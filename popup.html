@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LumaRank Profile</title>
+    <style>
+        /* Fixed width for Chrome extension popup */
+        body {
+            background-color: #f9fafb;
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            margin: 0;
+            /* match your extension popup width */
+            width: 300px;
+        }
+        .container {
+            width: 100%;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        .profile img {
+            height: 64px;
+            width: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .profile-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .username {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 0;
+            word-wrap: break-word;
+        }
+        .edit-btn {
+            color: #3b82f6;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.9em;
+            padding: 0;
+            text-align: left;
+        }
+        .checkmark-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background-color: #22c55e;
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 15px;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95em;
+            margin-bottom: 15px;
+        }
+        .events h2 {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .events ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .events li {
+            border-bottom: 1px solid #ddd;
+            padding: 8px 0;
+        }
+        .event-name {
+            font-weight: 600;
+            margin: 0;
+        }
+        .event-score {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 2px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Profile Section -->
+    <div class="profile">
+        <img src="https://images.lumacdn.com/cdn-cgi/image/format=auto,fit=cover,dpr=2,anim=false,background=white,quality=75,width=112,height=112/avatars/n2/9c86b36f-4de4-4dbd-8643-80dac4cc7c17.jpg" alt="Profile Picture">
+        <div class="profile-info">
+            <p class="username">@frk</p>
+            <button class="edit-btn">Edit Profile</button>
+        </div>
+    </div>
+
+    <!-- Checkmark + "Been" Button -->
+    <button class="checkmark-btn">
+        ✔️ Been
+    </button>
+
+    <!-- Ranked Events Feed -->
+    <div class="events">
+        <h2>Previously Ranked Events</h2>
+        <ul>
+            <li>
+                <p class="event-name">Hack Night at Microsoft</p>
+                <p class="event-score">10.0</p>
+            </li>
+            <li>
+                <p class="event-name">Community Meetup</p>
+                <p class="event-score">3.5</p>
+            </li>
+            <li>
+                <p class="event-name">Tech Talk</p>
+                <p class="event-score">4.8</p>
+            </li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
