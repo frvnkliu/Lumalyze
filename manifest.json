@@ -1,0 +1,20 @@
+{
+    "manifest_version": 3,
+    "name": "Luma Events Helper",
+    "version": "0.1.0",
+    "description": "Enhance lu.ma event pages",
+    "permissions": ["storage", "activeTab", "scripting"],
+    "host_permissions": ["https://lu.ma/*"],
+    "icons": { "48": "icons/Lumalyze.png" },
+    "action": {
+      "default_title": "Luma Events",
+      "default_popup": "popup.html"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://lu.ma/*"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
