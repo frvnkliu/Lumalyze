@@ -10,6 +10,15 @@ An AI-powered event recommendation system that uses pgAI to create vector embedd
 - Shows trending events based on community ratings
 - Customizable user preferences
 
+## Preview
+
+#### Predicted Rating Feature
+![Predicted Rating](predictedRating.png)
+
+#### Profile 
+![Extension Profile](profile.png)
+
+
 ## Project Structure
 
 ```
