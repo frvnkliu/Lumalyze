@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lu.ma Event Ratings</title>
+  <style>
+    :root {
+      --purple: #6c5ce7;
+      --purple-light: #a29bfe;
+      --dark: #2d3436;
+      --gray: #b2bec3;
+      --light: #dfe6e9;
+      --white: #ffffff;
+      --success: #00b894;
+      --warning: #fdcb6e;
+      --danger: #d63031;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, 
+                  Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    
+    body {
+      width: 350px;
+      padding: 0;
+      overflow-x: hidden;
+      background-color: var(--white);
+      color: var(--dark);
+    }
+    
+    header {
+      background-color: var(--purple);
+      color: var(--white);
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    .logo {
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+    }
+    
+    .logo-icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      background-color: var(--white);
+      border-radius: 50%;
+      margin-right: 8px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--purple);
+      font-weight: bold;
+      font-size: 12px;
+    }
+    
+    .tabs {
+      display: flex;
+      background-color: var(--light);
+      border-bottom: 1px solid var(--gray);
+    }
+    
+    .tab {
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--dark);
+      border-bottom: 2px solid transparent;
+    }
+    
+    .tab.active {
+      border-bottom: 2px solid var(--purple);
+      color: var(--purple);
+      background-color: var(--white);
+    }
+    
+    .tab-content {
+      display: none;
+      padding: 15px;
+    }
+    
+    .tab-content.active {
+      display: block;
+    }
+    
+    h2 {
+      font-size: 16px;
+      margin-bottom: 12px;
+      color: var(--dark);
+    }
+    
+    .form-group {
+      margin-bottom: 15px;
+    }
+    
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    
+    .toggle-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    
+    .toggle-switch {
+      position: relative;
+      display: inline-block;
+      width: 40px;
+      height: 20px;
+    }
+    
+    .toggle-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+    
+    .toggle-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--gray);
+      transition: .3s;
+      border-radius: 20px;
+    }
+    
+    .toggle-slider:before {
+      position: absolute;
+      content: "";
+      height: 16px;
+      width: 16px;
+      left: 2px;
+      bottom: 2px;
+      background-color: var(--white);
+      transition: .3s;
+      border-radius: 50%;
+    }
+    
+    input:checked + .toggle-slider {
+      background-color: var(--purple);
+    }
+    
+    input:checked + .toggle-slider:before {
+      transform: translateX(20px);
+    }
+    
+    .interest-tag {
+      display: inline-block;
+      background-color: var(--purple-light);
+      color: var(--white);
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      margin-right: 5px;
+      margin-bottom: 5px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .remove-tag {
+      margin-left: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 14px;
+    }
+    
+    input[type="text"] {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid var(--gray);
+      border-radius: 4px;
+      font-size: 14px;
+    }
+    
+    button {
+      background-color: var(--purple);
+      color: var(--white);
+      border: none;
+      padding: 8px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background-color 0.3s;
+    }
+    
+    button:hover {
+      background-color: var(--purple-light);
+    }
+    
+    .event-list {
+      margin-top: 10px;
+    }
+    
+    .event-item {
+      padding: 10px;
+      border-bottom: 1px solid var(--light);
+    }
+    
+    .event-title {
+      font-weight: 500;
+      margin-bottom: 5px;
+      font-size: 14px;
+    }
+    
+    .event-meta {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      color: var(--gray);
+    }
+    
+    .event-rating {
+      display: inline-block;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      background-color: var(--success);
+      color: var(--white);
+      text-align: center;
+      line-height: 25px;
+      font-weight: bold;
+      font-size: 12px;
+      margin-right: 8px;
+    }
+    
+    .event-rating.medium {
+      background-color: var(--warning);
+    }
+    
+    .event-rating.low {
+      background-color: var(--danger);
+    }
+    
+    .status-badge {
+      display: inline-block;
+      padding: 3px 6px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 500;
+      margin-left: 5px;
+    }
+    
+    .status-badge.connected {
+      background-color: var(--success);
+      color: var(--white);
+    }
+    
+    .status-badge.disconnected {
+      background-color: var(--gray);
+      color: var(--white);
+    }
+    
+    .footer {
+      padding: 10px 15px;
+      font-size: 12px;
+      text-align: center;
+      color: var(--gray);
+      border-top: 1px solid var(--light);
+    }
+    
+    .footer a {
+      color: var(--purple);
+      text-decoration: none;
+    }
+    
+    .empty-state {
+      padding: 20px;
+      text-align: center;
+      color: var(--gray);
+      font-size: 14px;
+    }
+    
+    .empty-state i {
+      font-size: 24px;
+      margin-bottom: 10px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <span class="logo-icon">A</span>
+      Lu.ma Event Ratings
+    </div>
+    <div class="api-status">
+      <span class="status-badge disconnected">API Disconnected</span>
+    </div>
+  </header>
+  
+  <div class="tabs">
+    <div class="tab active" data-tab="trending">Trending</div>
+    <div class="tab" data-tab="interests">My Interests</div>
+    <div class="tab" data-tab="settings">Settings</div>
+  </div>
+  
+  <div class="tab-content active" id="trending-tab">
+    <h2>Trending Events</h2>
+    <div class="event-list" id="trending-events">
+      <div class="empty-state">
+        <i>📊</i>
+        <p>Loading trending events...</p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="tab-content" id="interests-tab">
+    <h2>My Interests</h2>
+    <p class="form-hint">Add tags to customize your event ratings</p>
+    
+    <div class="form-group">
+      <div id="interests-container">
+        <!-- Interest tags will be added here -->
+      </div>
+      
+      <div style="display: flex; margin-top: 10px;">
+        <input type="text" id="new-interest" placeholder="Add new interest...">
+        <button id="add-interest" style="margin-left: 5px;">Add</button>
+      </div>
+    </div>
+    
+    <button id="save-interests">Save Interests</button>
+  </div>
+  
+  <div class="tab-content" id="settings-tab">
+    <h2>Settings</h2>
+    
+    <div class="form-group">
+      <div class="toggle-container">
+        <label for="show-ratings">Show Ratings</label>
+        <label class="toggle-switch">
+          <input type="checkbox" id="show-ratings" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+      
+      <div class="toggle-container">
+        <label for="rating-color">Color-code Ratings</label>
+        <label class="toggle-switch">
+          <input type="checkbox" id="rating-color" checked>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+    
+    <button id="save-settings">Save Settings</button>
+  </div>
+  
+  <div class="footer">
+    Powered by pgAI and TimescaleDB
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>

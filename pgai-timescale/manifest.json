@@ -1,0 +1,29 @@
+{
+  "name": "Lu.ma Event Ratings",
+  "version": "1.0.0",
+  "description": "AI-powered event recommendation system that provides personalized ratings for Lu.ma events",
+  "manifest_version": 3,
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://*.lu.ma/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.lu.ma/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icons/Lumalyze.png"
+  },
+  "icons": {
+    "128": "icons/Lumalyze.png"
+  }
+}
