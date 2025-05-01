@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "Luma Events Helper",
+    "name": "Lumalyze",
     "version": "0.1.0",
     "description": "Enhance lu.ma event pages",
     "permissions": ["storage", "activeTab", "scripting"],
