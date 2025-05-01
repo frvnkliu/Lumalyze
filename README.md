@@ -1,5 +1,5 @@
-# Lumalyze Lu.ma Event Rating Chrome Extension
-
+# Lumalyze 
+## Lu.ma Event Rating Chrome Extension
 An AI-powered event recommendation system that uses pgAI to create vector embeddings of Lu.ma event data and provide personalized event suggestions based on user interests.
 
 ## Features
