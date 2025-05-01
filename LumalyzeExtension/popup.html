@@ -10,11 +10,9 @@
             font-family: Arial, sans-serif;
             padding: 10px;
             margin: 0;
-            /* match your extension popup width */
             width: 300px;
         }
         .container {
-            width: 100%;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             border-radius: 10px;
@@ -35,14 +33,12 @@
         }
         .profile-info {
             flex: 1;
-            display: flex;
-            flex-direction: column;
         }
         .username {
             font-size: 1.2em;
             font-weight: bold;
             margin: 0;
-            word-wrap: break-word;
+            word-break: break-all;
         }
         .edit-btn {
             color: #3b82f6;
@@ -51,6 +47,7 @@
             cursor: pointer;
             font-size: 0.9em;
             padding: 0;
+            margin-top: 4px;
             text-align: left;
         }
         .checkmark-btn {
@@ -66,10 +63,16 @@
             font-size: 0.95em;
             margin-bottom: 15px;
         }
+        /* Border around rankings */
+        .events {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+        }
         .events h2 {
             font-size: 1.1em;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin: 0 0 10px;
         }
         .events ul {
             list-style: none;
@@ -77,17 +80,28 @@
             margin: 0;
         }
         .events li {
-            border-bottom: 1px solid #ddd;
-            padding: 8px 0;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .events li:last-child {
+            border-bottom: none;
         }
         .event-name {
             font-weight: 600;
             margin: 0;
         }
         .event-score {
-            color: #666;
             font-size: 0.9em;
-            margin-top: 2px;
+            margin: 4px 0 0;
+        }
+        .score-positive { color: #22c55e; }
+        .score-neutral { color: rgb(198, 198, 0) }
+        .score-negative { color: #ef4444; }
+        
+        .event-desc {
+            font-size: 0.9em;
+            color: #555;
+            margin: 6px 0 0;
         }
     </style>
 </head>
@@ -104,30 +118,28 @@
         </div>
     </div>
 
-    <!-- Checkmark + "Been" Button -->
+    <!-- "Been" Button -->
     <button class="checkmark-btn">
         ✔️ Been
     </button>
 
-    <!-- Ranked Events Feed -->
+    <!-- Ranked Events Feed with Border -->
     <div class="events">
         <h2>Previously Ranked Events</h2>
         <ul>
             <li>
                 <p class="event-name">Hack Night at Microsoft</p>
-                <p class="event-score" style = "color:#22c55e">10.0</p>
-                <p>Description:<br>I love vector and timeseries databases.  timescale > kdb+ </p>
+                <p class="event-score score-positive">10.0</p>
+                <p class="event-desc">I love vector and time‑series databases. timescale &gt; kdb+</p>
             </li>
             <li>
-                <p class="event-name">Crypto Community Meetup
-
-                </p>
-                <p class="event-score" style = "color:red">3.5</p>
-                <p>Description:<br>lost my life savings in a meme coin</p>
+                <p class="event-name">Crypto Community Meetup</p>
+                <p class="event-score score-negative">3.5</p>
+                <p class="event-desc">Lost my life savings in a meme coin</p>
             </li>
             <li>
                 <p class="event-name">Tech Talk</p>
-                <p class="event-score">4.8</p>
+                <p class="event-score score-neutral">5.8</p>
             </li>
         </ul>
     </div>
